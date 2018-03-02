@@ -21,16 +21,12 @@ typedef struct _image {
     int shades;
 } Image;
 
-extern const Pixel black;
-extern const Pixel white;
-extern const Pixel gray;
-
 /* Read PGM image from a file */
 Pixel *readPGMFile(int *rows, int *cols, int * shades, FILE *fp);
 /* Reads PGM formatted image from filenam */
 Pixel *readPGM(int *rows, int *cols, int * shades, char *fileName);
 /* Read PGM image, and allocates and returns image.*/
-Pixel *readPGMImage(FILE *imfile);
+Image *readPGMImage(FILE *imfile);
 
 /*Write a PGM formatted image file.*/
 int writePGMFile(Pixel *image, int rows, int cols, int shades, FILE *fp);

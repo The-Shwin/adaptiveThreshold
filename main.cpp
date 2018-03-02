@@ -1,6 +1,9 @@
 #include <iostream>
-#include "pgmIO.hpp"
-#include "imageManipulation.hpp"
+
+extern "C" {
+  #include "pgmIO.h"
+}
+
 
 
 using namespace std;
@@ -11,4 +14,4 @@ int main(int argc, char** argv) {
 
 
     return 0;
-} 
+}
