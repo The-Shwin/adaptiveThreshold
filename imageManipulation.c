@@ -13,15 +13,15 @@ Image* gaussianWeightedThreshold(Image *im) {
         free(new);
         return NULL;
     }
-    float gcurr = 8;//0.25;
-    float gup = -1;//0.125;
-    float gleft = -1;//0.125;
-    float gright = -1;//0.125;
-    float gdown = -1;//0.125;
-    float gur = -1;//0.0625;
-    float gul = -1;//0.0625;
-    float gdr = -1;//0.0625;
-    float gdl = -1;//0.0625;
+    float gcurr = -4;//0.25;
+    float gup = 1;//0.125;
+    float gleft = 1;//0.125;
+    float gright = 1;//0.125;
+    float gdown = 1;//0.125;
+    float gur = 0;//0.0625;
+    float gul = 0;//0.0625;
+    float gdr = 0;//0.0625;
+    float gdl = 0;//0.0625;
     unsigned char curr = 0;
     unsigned char up = 0;
     unsigned char left = 0;
