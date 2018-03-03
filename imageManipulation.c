@@ -177,4 +177,5 @@ Image* globalThreshold(Image *im) {
             }
         }
     }
+    return new;
 }
