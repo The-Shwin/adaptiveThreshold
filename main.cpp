@@ -5,21 +5,28 @@ extern "C" {
   #include "imageManipulation.h"
 }
 
-using namespace std;
-
 int main(int argc, char** argv) {
     char *fileName1 = "testImage0.pgm";
     char *fileName2 = "testImage1.pgm";
     Image *testImage0 = readPGMImage(fileName1);
     Image *testImage1 = readPGMImage(fileName2);
 
-    char *outFile1 = "outputImage0.pgm";
-    char *outFile2 = "outputImage1.pgm";
+    char *gaussOutFile1 = "gaussianOutputImage0.pgm";
+    char *gaussOutFile2 = "gaussianOutputImage1.pgm";
 
-    Image *output1 = adaptiveThreshold(testImage0);
-    writePGMImage(output1, outFile1);
-    Image *output2 = adaptiveThreshold(testImage1);
-    writePGMImage(output2, outFile2);
+    Image *output1 = gaussianWeightedThreshold(testImage0);
+    writePGMImage(output1, gaussOutFile1);
+    Image *output2 = gaussianWeightedThreshold(testImage1);
+    writePGMImage(output2, gaussOutFile1);
+
+    char *avgOutFile1 = "avgOutputImage0.pgm";
+    char *avgOutFile2 = "avgOutputImage1.pgm";
+    Image *output1 = meanBasedThreshold(testImage0);
+    Image *output2 = meanBasedTHreshold(testImage1);
+
+    writePGMImage(output1, avgOutFile1);
+    writePGMImage(output2, avgOutFile2);
+
 
     return 0;
 }

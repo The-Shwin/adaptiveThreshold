@@ -1,6 +1,6 @@
 #include "imageManipulation.h"
 
-Image* adaptiveThreshold(Image *im) {
+Image* gaussianWeightedThreshold(Image *im) {
     Image *new = malloc(sizeof(Image));
     if (!new) {
         return NULL;
@@ -33,8 +33,8 @@ Image* adaptiveThreshold(Image *im) {
     unsigned char dl = 0;
     int rows = im->rows;
     int cols = im->cols;
-    for (int r = 0; r < rows; r++) {
-        for (int c = 0; c < cols; c++) {
+    for (int r = 0; r < rows; r+2) {
+        for (int c = 0; c < cols; c+2) {
           if (c - 1 >= 0) {
               left = gleft * im->data[(r*cols)+(c-1)].i;
               if (r - 1 >= 0) {
@@ -75,6 +75,88 @@ Image* adaptiveThreshold(Image *im) {
           ul = 0;
           dr = 0;
           dl = 0;
+        }
+    }
+    return new;
+}
+
+Image* meanBasedThreshold(Image *im) {
+    Image *new = malloc(sizeof(Image));
+    if (!new) {
+        return NULL;
+    }
+    new->rows = im->rows;
+    new->cols = im->cols;
+    new->shades = im->shades;
+    new->data =  malloc((new->rows * new->cols) * sizeof(Pixel));
+    if (!new->data) {
+        free(new);
+        return NULL;
+    }
+    unsigned char curr = 0;
+    unsigned char up = 0;
+    unsigned char left = 0;
+    unsigned char right = 0;
+    unsigned char down = 0;
+    unsigned char ur = 0;
+    unsigned char ul = 0;
+    unsigned char dr = 0;
+    unsigned char dl = 0;
+    int count = 0;
+    int rows = im->rows;
+    int cols = im->cols;
+    for (int r = 0; r < rows; r++) {
+        for (int c = 0; c < cols; c++) {
+          if (c - 1 >= 0) {
+              left = im->data[(r*cols)+(c-1)].i;
+              count++;
+              if (r - 1 >= 0) {
+                  ul = im->data[((r-1)*cols)+(c-1)].i;
+                  count++;
+              }
+              if (r + 1 <= rows) {
+                  dl = im->data[((r+1)*cols)+(c-1)].i;
+                  count++;
+              }
+          }
+          if (c + 1 <= cols) {
+              right = im->data[(r*cols)+(c+1)].i;
+              count++;
+              if (r - 1 >= 0) {
+                  ur = im->data[((r-1)*cols)+(c+1)].i;
+                  count++;
+              }
+              if (r + 1 <= rows) {
+                  dr = im->data[((r+1)*cols)+(c+1)].i;
+                  count++;
+              }
+          }
+          if (r - 1 >= 0) {
+            up = im->data[((r-1)*cols)+c].i;
+            count++;
+          }
+          if (r + 1 <= rows) {
+            down = im->data[((r+1)*cols)+c].i;
+            count++;
+          }
+          curr = im->data[(r*cols)+c].i;
+          count++;
+          unsigned char mean = (down + up + left + right + curr + ul + ur + dl + dr) / count;
+          if (im->data[(r*cols)+c].i >= mean) {
+              new->data[(r*cols)+c].i = 0;
+          } else {
+              new->data[(r*cols)+c].i = 255;
+          }
+          curr = 0;
+          up = 0;
+          left = 0;
+          right = 0;
+          down = 0;
+          ur = 0;
+          ul = 0;
+          dr = 0;
+          dl = 0;
+          count = 0;
         }
     }
     return new;
