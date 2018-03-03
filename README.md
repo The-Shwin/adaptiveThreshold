@@ -5,14 +5,15 @@ pgmIO and imageManipulation are written in C while the main file is
 a C++ file. Compiling and running them requires the instructions below.
 
 Compiling/Running Instructions (via command line):
+------
 Run the following commands in order.
-gcc -c -o pgmIO.o pgmIO.c
-gcc -c -o imageManipulation.o imageManipulation.c
-g++ -c -o main.o main.cpp
-g++ -o adapThresh pgmIO.o imageManipulation.o main.o
+`gcc -c -o pgmIO.o pgmIO.c`
+`gcc -c -o imageManipulation.o imageManipulation.c`
+`g++ -c -o main.o main.cpp`
+`g++ -o adapThresh pgmIO.o imageManipulation.o main.o`
 
 Now that it is compiled this program can be run via the following command:
-./adapThresh
+`./adapThresh`
 
 This program has two image files code into the main.cpp. These are "testImage0.pgm"
 and "testImage1.pgm".
@@ -23,4 +24,4 @@ functions are called in main.cpp and the outputs of these functions on the two
 test images are saved to the current directory.
 
 Note: This code only works on .pgm image files that have "P5" coded on the first line.
-Other images will not work, but the code can be easily modified for that purpose. 
+Other images will not work, but the code can be easily modified for that purpose.
