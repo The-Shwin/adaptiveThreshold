@@ -6,7 +6,7 @@ a C++ file. Compiling and running them requires the instructions below.
 
 Compiling/Running Instructions (via command line):
 ------
-Run the following commands in order.
+Run the following commands in order. <br>
 `gcc -c -o pgmIO.o pgmIO.c` <br>
 `gcc -c -o imageManipulation.o imageManipulation.c` <br>
 `g++ -c -o main.o main.cpp` <br>
