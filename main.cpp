@@ -19,13 +19,13 @@ int main(int argc, char** argv) {
     Image *output2 = gaussianWeightedThreshold(testImage1);
     writePGMImage(output2, gaussOutFile2);
 
-    char *avgOutFile1 = "avgOutputImage0.pgm";
-    char *avgOutFile2 = "avgOutputImage1.pgm";
-    output1 = meanBasedThreshold(testImage0);
-    output2 = meanBasedThreshold(testImage1);
+    //char *avgOutFile1 = "avgOutputImage0.pgm";
+    //char *avgOutFile2 = "avgOutputImage1.pgm";
+    //output1 = meanBasedThreshold(testImage0);
+    //output2 = meanBasedThreshold(testImage1);
 
-    writePGMImage(output1, avgOutFile1);
-    writePGMImage(output2, avgOutFile2);
+    //writePGMImage(output1, avgOutFile1);
+    //writePGMImage(output2, avgOutFile2);
 
 
     return 0;
