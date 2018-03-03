@@ -202,8 +202,8 @@ Image *minmaxThreshold(Image *im) {
             down = im->data[((r+1)*cols)+c].i;
           }
           curr = im->data[(r*cols)+c].i;
-          unsigned char * array = new unsigned char[9];
-          array[0] = curr;
+          unsigned char array[] = {curr, down, up, left, right, ul, ur, dl, dr};
+          /*array[0] = curr;
           array[1] = down;
           array[2] = up;
           array[3] = left;
@@ -211,7 +211,7 @@ Image *minmaxThreshold(Image *im) {
           array[5] = ul;
           array[6] = ur;
           array[7] = dl;
-          array[8] = dr;
+          array[8] = dr;*/
           unsigned char max = array[0];
           unsigned char min = array[0];
 
