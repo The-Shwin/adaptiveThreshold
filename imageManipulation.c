@@ -203,15 +203,6 @@ Image *minmaxThreshold(Image *im) {
           }
           curr = im->data[(r*cols)+c].i;
           unsigned char array[] = {curr, down, up, left, right, ul, ur, dl, dr};
-          /*array[0] = curr;
-          array[1] = down;
-          array[2] = up;
-          array[3] = left;
-          array[4] = right;
-          array[5] = ul;
-          array[6] = ur;
-          array[7] = dl;
-          array[8] = dr;*/
           unsigned char max = array[0];
           unsigned char min = array[0];
 
@@ -262,7 +253,7 @@ Image* globalThreshold(Image *im) {
     for (int r = 0; r < rows; r++) {
         for (int c = 0; c < cols; c++) {
             curr = im->data[(r*cols)+c].i;
-            if (curr < 110) {
+            if (curr < 150) {
                 new->data[(r*cols)+c].i = 0;
             } else {
                 new->data[(r*cols)+c].i = 255;

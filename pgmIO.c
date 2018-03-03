@@ -66,7 +66,7 @@ Pixel *readPGMFile(int *rows, int *cols, int * shades, FILE *fp) {
     return NULL;
   }
 
-  *cols = readNum(fp); // cols, then rows (i.e. X size followed by Y size)
+  *cols = readNum(fp); // cols, then rows
   *rows = readNum(fp);
   *shades = readNum(fp);
 
