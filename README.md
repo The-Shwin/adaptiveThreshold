@@ -7,10 +7,10 @@ a C++ file. Compiling and running them requires the instructions below.
 Compiling/Running Instructions (via command line):
 ------
 Run the following commands in order. <br>
-`gcc -c -o pgmIO.o pgmIO.c` <br>
-`gcc -c -o imageManipulation.o imageManipulation.c` <br>
-`g++ -c -o main.o main.cpp` <br>
-`g++ -o adapThresh pgmIO.o imageManipulation.o main.o` <br>
+`gcc -c -o pgmIO.o pgmIO.c <br>
+gcc -c -o imageManipulation.o imageManipulation.c <br>
+g++ -c -o main.o main.cpp <br>
+g++ -o adapThresh pgmIO.o imageManipulation.o main.o` <br>
 
 Now that it is compiled this program can be run via the following command: <br>
 `./adapThresh`
@@ -29,13 +29,13 @@ Other images will not work, but the code can be easily modified for that purpose
 Outputs:
 ------
 Gaussian Weighted Average Thresholds
-"gaussianOutputImage0.pgm"
-"gaussianOutputImage1.pgm"
+* "gaussianOutputImage0.pgm"
+* "gaussianOutputImage1.pgm"
 
 Average Based Thresholds
-"avgOutputImage0.pgm"
-"avgOutputImage1.pgm"
+* "avgOutputImage0.pgm"
+* "avgOutputImage1.pgm"
 
 Simple Global Thresholds
-"simpleOutImage0.pgm"
-"simpleOutImage1.pgm"
+* "simpleOutImage0.pgm"
+* "simpleOutImage1.pgm"
