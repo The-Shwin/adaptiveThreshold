@@ -2,6 +2,7 @@
 #define PGM_IO
 
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef struct _point {
     int r;
