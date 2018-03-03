@@ -33,8 +33,8 @@ Image* gaussianWeightedThreshold(Image *im) {
     unsigned char dl = 0;
     int rows = im->rows;
     int cols = im->cols;
-    for (int r = 0; r < rows; r+=2) {
-        for (int c = 0; c < cols; c+=2) {
+    for (int r = 0; r < rows; r+=3) {
+        for (int c = 0; c < cols; c+=3) {
           if (c - 1 >= 0) {
               left = gleft * im->data[(r*cols)+(c-1)].i;
               if (r - 1 >= 0) {
