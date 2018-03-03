@@ -20,6 +20,6 @@ int main(int argc, char** argv) {
     writePGMImage(output1, outFile1);
     Image *output2 = adaptiveThreshold(testImage1);
     writePGMImage(output2, outFile2);
-    
+
     return 0;
 }

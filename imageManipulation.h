@@ -4,7 +4,6 @@
 #include "pgmIO.h"
 
 /* Performs a gaussian blur on the image.*/
-Image* adapativeThreshold(Image *im);
-
+Image* adaptiveThreshold(Image *im);
 
 #endif
