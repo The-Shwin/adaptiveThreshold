@@ -33,8 +33,8 @@ Image* gaussianWeightedThreshold(Image *im) {
     unsigned char dl = 0;
     int rows = im->rows;
     int cols = im->cols;
-    for (int r = 0; r < rows; r+=3) {
-        for (int c = 0; c < cols; c+=3) {
+    for (int r = 0; r < rows; r++) {
+        for (int c = 0; c < cols; c++) {
           if (c - 1 >= 0) {
               left = gleft * im->data[(r*cols)+(c-1)].i;
               if (r - 1 >= 0) {
@@ -61,10 +61,10 @@ Image* gaussianWeightedThreshold(Image *im) {
           }
           curr = gcurr * im->data[(r*cols)+c].i;
           unsigned char weightedAvg = down + up + left + right + curr + ul + ur + dl + dr;
-          if (im->data[(r*cols)+c].i >= weightedAvg) {
-              new->data[(r*cols)+c].i = 255;
-          } else {
+          if (im->data[(r*cols)+c].i > weightedAvg) {
               new->data[(r*cols)+c].i = 0;
+          } else {
+              new->data[(r*cols)+c].i = 255;
           }
           curr = 0;
           up = 0;
@@ -143,9 +143,9 @@ Image* meanBasedThreshold(Image *im) {
           count++;
           unsigned char mean = (down + up + left + right + curr + ul + ur + dl + dr) / count;
           if (im->data[(r*cols)+c].i > mean) {
-              new->data[(r*cols)+c].i = 255;
-          } else {
               new->data[(r*cols)+c].i = 0;
+          } else {
+              new->data[(r*cols)+c].i = 255;
           }
           curr = 0;
           up = 0;
