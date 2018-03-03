@@ -17,7 +17,7 @@ int main(int argc, char** argv) {
     Image *output1 = gaussianWeightedThreshold(testImage0);
     writePGMImage(output1, gaussOutFile1);
     Image *output2 = gaussianWeightedThreshold(testImage1);
-    writePGMImage(output2, gaussOutFile1);
+    writePGMImage(output2, gaussOutFile2);
 
     char *avgOutFile1 = "avgOutputImage0.pgm";
     char *avgOutFile2 = "avgOutputImage1.pgm";
