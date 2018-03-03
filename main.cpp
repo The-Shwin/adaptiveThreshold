@@ -37,8 +37,8 @@ int main(int argc, char** argv) {
 
     char *minmaxOutFile1 = "minmaxOutImage0.pgm";
     char *minmaxOutFile2 = "minmaxOutImage1.pgm";
-    Image *output7 = globalThreshold(testImage0);
-    Image *output8 = globalThreshold(testImage1);
+    Image *output7 = minmaxThreshold(testImage0);
+    Image *output8 = minmaxThreshold(testImage1);
 
     writePGMImage(output7, minmaxOutFile1);
     writePGMImage(output8, minmaxOutFile2);
