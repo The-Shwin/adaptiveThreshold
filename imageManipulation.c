@@ -143,9 +143,9 @@ Image* meanBasedThreshold(Image *im) {
           count++;
           unsigned char mean = (down + up + left + right + curr + ul + ur + dl + dr) / count;
           if (im->data[(r*cols)+c].i >= mean) {
-              new->data[(r*cols)+c].i = 255;
-          } else {
               new->data[(r*cols)+c].i = 0;
+          } else {
+              new->data[(r*cols)+c].i = 255;
           }
           curr = 0;
           up = 0;
