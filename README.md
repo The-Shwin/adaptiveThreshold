@@ -10,7 +10,7 @@ Run the following commands in order.
 ```
 gcc -c -o pgmIO.o pgmIO.c
 gcc -c -o imageManipulation.o imageManipulation.c
-g++ -c -o main.o main.cpp
+g++ -w -c -o main.o main.cpp
 g++ -o adapThresh pgmIO.o imageManipulation.o main.o
 ```
 
