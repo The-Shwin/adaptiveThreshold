@@ -23,4 +23,18 @@ functions are called in main.cpp and the outputs of these functions on the two
 test images are saved to the current directory.
 
 Note: This code only works on .pgm image files that have "P5" coded on the first line.
-Other images will not work, but the code can be easily modified for that purpose. 
+Other images will not work, but the code can be easily modified for that purpose.
+
+Outputs:
+------
+Gaussian Weighted Average Thresholds
+"gaussianOutputImage0.pgm"
+"gaussianOutputImage1.pgm"
+
+Average Based Thresholds
+"avgOutputImage0.pgm"
+"avgOutputImage1.pgm"
+
+Simple Global Thresholds
+"simpleOutImage0.pgm"
+"simpleOutImage1.pgm"
