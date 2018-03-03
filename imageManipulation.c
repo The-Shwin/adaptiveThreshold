@@ -62,9 +62,9 @@ Image* gaussianWeightedThreshold(Image *im) {
           curr = gcurr * im->data[(r*cols)+c].i;
           unsigned char weightedAvg = down + up + left + right + curr + ul + ur + dl + dr;
           if (im->data[(r*cols)+c].i > weightedAvg) {
-              new->data[(r*cols)+c].i = 255;
-          } else {
               new->data[(r*cols)+c].i = 0;
+          } else {
+              new->data[(r*cols)+c].i = 255;
           }
           curr = 0;
           up = 0;
@@ -133,6 +133,99 @@ Image* meanBasedThreshold(Image *im) {
           curr = im->data[(r*cols)+c].i;
           unsigned char mean = (down + up + left + right + curr + ul + ur + dl + dr) / 9;
           if (im->data[(r*cols)+c].i >= mean) {
+              new->data[(r*cols)+c].i = 0;
+          } else {
+              new->data[(r*cols)+c].i = 255;
+          }
+          curr = 0;
+          up = 0;
+          left = 0;
+          right = 0;
+          down = 0;
+          ur = 0;
+          ul = 0;
+          dr = 0;
+          dl = 0;
+        }
+    }
+    return new;
+}
+
+Image *minmaxThreshold(Image *im) {
+    Image *new = malloc(sizeof(Image));
+    if (!new) {
+        return NULL;
+    }
+    new->rows = im->rows;
+    new->cols = im->cols;
+    new->shades = im->shades;
+    new->data =  malloc((new->rows * new->cols) * sizeof(Pixel));
+    if (!new->data) {
+        free(new);
+        return NULL;
+    }
+    int rows = im->rows;
+    int cols = im->cols;
+    unsigned char curr = 0;
+    unsigned char up = 0;
+    unsigned char left = 0;
+    unsigned char right = 0;
+    unsigned char down = 0;
+    unsigned char ur = 0;
+    unsigned char ul = 0;
+    unsigned char dr = 0;
+    unsigned char dl = 0;
+    for (int r = 0; r < rows; r++) {
+        for (int c = 0; c < cols; c++) {
+          if (c - 1 >= 0) {
+              left = im->data[(r*cols)+(c-1)].i;
+              if (r - 1 >= 0) {
+                  ul = im->data[((r-1)*cols)+(c-1)].i;
+              }
+              if (r + 1 <= rows) {
+                  dl = im->data[((r+1)*cols)+(c-1)].i;
+              }
+          }
+          if (c + 1 <= cols) {
+              right = im->data[(r*cols)+(c+1)].i;
+              if (r - 1 >= 0) {
+                  ur = im->data[((r-1)*cols)+(c+1)].i;
+              }
+              if (r + 1 <= rows) {
+                  dr = im->data[((r+1)*cols)+(c+1)].i;
+              }
+          }
+          if (r - 1 >= 0) {
+            up = im->data[((r-1)*cols)+c].i;
+          }
+          if (r + 1 <= rows) {
+            down = im->data[((r+1)*cols)+c].i;
+          }
+          curr = im->data[(r*cols)+c].i;
+          (down + up + left + right + curr + ul + ur + dl + dr) / 9;
+          unsigned char* array = new unsigned char[9];
+          array[0] = curr;
+          array[1] = down;
+          array[2] = up;
+          array[3] = left;
+          array[4] = right;
+          array[5] = ul;
+          array[6] = ur;
+          array[7] = dl;
+          array[8] = dr;
+          unsigned char max = array[0];
+          unsigned char min = array[0];
+
+          for (int x = 0; x < 9; x++) {
+              if (array[x] > max) {
+                  max = array[x];
+              }
+              if (array[x] < min) {
+                  min = array[x];
+              }
+          }
+          unsigned char minmaxMean = (min + max) / 2;
+          if (im->data[(r*cols)+c].i >= minmaxMean) {
               new->data[(r*cols)+c].i = 0;
           } else {
               new->data[(r*cols)+c].i = 255;

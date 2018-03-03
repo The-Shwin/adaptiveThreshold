@@ -7,6 +7,8 @@
 Image* gaussianWeightedThreshold(Image *im);
 /*Performs an average based thresholding.*/
 Image* meanBasedThreshold(Image *im);
+/*Performs thresholding via minmax averaging*/
+Image* minmaxThreshold(Image *im);
 /*Uses a constant threshold for global thresholding.*/
 Image* globalThreshold(Image *im);
 
