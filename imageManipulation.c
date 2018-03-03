@@ -62,9 +62,9 @@ Image* adaptiveThreshold(Image *im) {
           curr = gcurr * im->data[(r*cols)+c].i;
           unsigned char weightedAvg = down + up + left + right + curr + ul + ur + dl + dr;
           if (im->data[(r*cols)+c].i >= weightedAvg) {
-              new->data[(r*cols)+c].i = 255;
-          } else {
               new->data[(r*cols)+c].i = 0;
+          } else {
+              new->data[(r*cols)+c].i = 255;
           }
           curr = 0;
           up = 0;
