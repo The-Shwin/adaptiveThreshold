@@ -253,7 +253,7 @@ Image* globalThreshold(Image *im) {
     for (int r = 0; r < rows; r++) {
         for (int c = 0; c < cols; c++) {
             curr = im->data[(r*cols)+c].i;
-            if (curr < 100) {
+            if (curr < 90) {
                 new->data[(r*cols)+c].i = 0;
             } else {
                 new->data[(r*cols)+c].i = 255;
