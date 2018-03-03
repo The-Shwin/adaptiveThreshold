@@ -21,11 +21,11 @@ int main(int argc, char** argv) {
 
     char *avgOutFile1 = "avgOutputImage0.pgm";
     char *avgOutFile2 = "avgOutputImage1.pgm";
-    output1 = meanBasedThreshold(testImage0);
-    output2 = meanBasedThreshold(testImage1);
+    Image *output3 = meanBasedThreshold(testImage0);
+    Image *output4 = meanBasedThreshold(testImage1);
 
-    writePGMImage(output1, avgOutFile1);
-    writePGMImage(output2, avgOutFile2);
+    writePGMImage(output3, avgOutFile1);
+    writePGMImage(output4, avgOutFile2);
 
 
     return 0;
