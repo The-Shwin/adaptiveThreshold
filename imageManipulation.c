@@ -62,9 +62,9 @@ Image* gaussianWeightedThreshold(Image *im) {
           curr = gcurr * im->data[(r*cols)+c].i;
           unsigned char weightedAvg = down + up + left + right + curr + ul + ur + dl + dr;
           if (im->data[(r*cols)+c].i >= weightedAvg) {
-              new->data[(r*cols)+c].i = 0;
-          } else {
               new->data[(r*cols)+c].i = 255;
+          } else {
+              new->data[(r*cols)+c].i = 0;
           }
           curr = 0;
           up = 0;
@@ -142,10 +142,10 @@ Image* meanBasedThreshold(Image *im) {
           curr = im->data[(r*cols)+c].i;
           count++;
           unsigned char mean = (down + up + left + right + curr + ul + ur + dl + dr) / count;
-          if (im->data[(r*cols)+c].i >= mean) {
-              new->data[(r*cols)+c].i = 0;
-          } else {
+          if (im->data[(r*cols)+c].i > mean) {
               new->data[(r*cols)+c].i = 255;
+          } else {
+              new->data[(r*cols)+c].i = 0;
           }
           curr = 0;
           up = 0;
