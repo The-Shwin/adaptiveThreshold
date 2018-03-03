@@ -77,7 +77,7 @@ Pixel *readPGMFile(int *rows, int *cols, int * shades, FILE *fp) {
         fprintf(stderr, "Error:pgmIO - failed to read data from file!\n");
         free(image);
         return NULL;
-      }g
+      }
       return image;
     } else {
       fprintf(stderr, "Error:pgmIO - failed to allocate space for image!\n");
