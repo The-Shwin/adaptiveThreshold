@@ -5,7 +5,6 @@
 #include <ctype.h>
 #include "pgmIO.h"
 
-
 Image *readPGMImage(char *filename) {
   Image *im = malloc(sizeof(Image));
   if (im) {
@@ -17,7 +16,6 @@ Image *readPGMImage(char *filename) {
   }
   return im;
 }
-
 
 Pixel *readPGM(int *rows, int *cols, int * shades, char *filename) {
   FILE *fp = fopen(filename, "r");
@@ -63,7 +61,7 @@ Pixel *readPGMFile(int *rows, int *cols, int * shades, FILE *fp) {
   char tag[20];
   tag[19]='\0';
   fscanf(fp, "%19s\n", tag);
-  if (strncmp(tag, "P2", 20)) {
+  if (strncmp(tag, "P5", 20)) {
     fprintf(stderr, "Error:pgmIO - not a PGM (bad tag)\n");
     return NULL;
   }
@@ -126,7 +124,7 @@ int writePGMFile(Pixel *image, int rows, int cols, int shades, FILE *fp) {
     return 0;
   }
 
-  fprintf(fp, "P2\n");
+  fprintf(fp, "P5\n");
   fprintf(fp, "%d %d\n%d\n", cols, rows, shades);
   int written = fwrite(image, sizeof(Pixel), rows * cols, fp);
   if (written != (rows * cols)) {

@@ -1,12 +1,10 @@
 #ifndef IMAGE_MANIPULATION
-#define
+#define IMAGE_MANIPULATION
 
-#include "ppmIO.h"
+#include "pgmIO.h"
 
 /* Performs a gaussian blur on the image.*/
-void gaussianBlur(Image *im);
-/* Performs adaptive threshold on the image.*/
-void adaptiveThreshold(Image *im);
+Image* adapativeThreshold(Image *im);
 
 
 #endif
