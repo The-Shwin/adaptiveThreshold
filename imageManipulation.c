@@ -102,45 +102,35 @@ Image* meanBasedThreshold(Image *im) {
     unsigned char ul = 0;
     unsigned char dr = 0;
     unsigned char dl = 0;
-    int count = 0;
     int rows = im->rows;
     int cols = im->cols;
     for (int r = 0; r < rows; r++) {
         for (int c = 0; c < cols; c++) {
           if (c - 1 >= 0) {
               left = im->data[(r*cols)+(c-1)].i;
-              count++;
               if (r - 1 >= 0) {
                   ul = im->data[((r-1)*cols)+(c-1)].i;
-                  count++;
               }
               if (r + 1 <= rows) {
                   dl = im->data[((r+1)*cols)+(c-1)].i;
-                  count++;
               }
           }
           if (c + 1 <= cols) {
               right = im->data[(r*cols)+(c+1)].i;
-              count++;
               if (r - 1 >= 0) {
                   ur = im->data[((r-1)*cols)+(c+1)].i;
-                  count++;
               }
               if (r + 1 <= rows) {
                   dr = im->data[((r+1)*cols)+(c+1)].i;
-                  count++;
               }
           }
           if (r - 1 >= 0) {
             up = im->data[((r-1)*cols)+c].i;
-            count++;
           }
           if (r + 1 <= rows) {
             down = im->data[((r+1)*cols)+c].i;
-            count++;
           }
           curr = im->data[(r*cols)+c].i;
-          count++;
           unsigned char mean = (down + up + left + right + curr + ul + ur + dl + dr) / 9;
           if (im->data[(r*cols)+c].i >= mean) {
               new->data[(r*cols)+c].i = 0;
@@ -156,8 +146,35 @@ Image* meanBasedThreshold(Image *im) {
           ul = 0;
           dr = 0;
           dl = 0;
-          count = 0;
         }
     }
     return new;
+}
+
+Image* globalThreshold(Image *im) {
+    Image *new = malloc(sizeof(Image));
+    if (!new) {
+        return NULL;
+    }
+    new->rows = im->rows;
+    new->cols = im->cols;
+    new->shades = im->shades;
+    new->data =  malloc((new->rows * new->cols) * sizeof(Pixel));
+    if (!new->data) {
+        free(new);
+        return NULL;
+    }
+    int rows = im->rows;
+    int cols = im->cols;
+    unsigned char curr = 0;
+    for (int r = 0; r < rows; r++) {
+        for (int c = 0; c < cols; c++) {
+            curr = im->data[(r*cols)+c].i;
+            if (curr < 110) {
+                new->data[(r*cols)+c].i = 0;
+            } else {
+                new->data[(r*cols)+c].i = 255;
+            }
+        }
+    }
 }

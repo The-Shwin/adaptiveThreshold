@@ -3,9 +3,11 @@
 
 #include "pgmIO.h"
 
-/* Performs a gaussian blur on the image.*/
+/* Performs a gaussian weighted average thresholding on the image.*/
 Image* gaussianWeightedThreshold(Image *im);
-
+/*Performs an average based thresholding.*/
 Image* meanBasedThreshold(Image *im);
+/*Uses a constant threshold for global thresholding.*/
+Image* globalThreshold(Image *im);
 
 #endif
