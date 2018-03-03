@@ -41,7 +41,7 @@ The minmax averaging method finds the minimum and maximum pixel intensities and
 averages them together. This average is uses as the threshold value.
 
 Finally, the simple thresholding uses the constant threshold intensity of 90 to
-binarize the image. 
+binarize the image. This method works pretty well for testImage1. 
 
 Outputs:
 ------
