@@ -7,12 +7,12 @@ a C++ file. Compiling and running them requires the instructions below.
 Compiling/Running Instructions (via command line):
 ------
 Run the following commands in order.
-`gcc -c -o pgmIO.o pgmIO.c`
-`gcc -c -o imageManipulation.o imageManipulation.c`
-`g++ -c -o main.o main.cpp`
-`g++ -o adapThresh pgmIO.o imageManipulation.o main.o`
+`gcc -c -o pgmIO.o pgmIO.c` <br>
+`gcc -c -o imageManipulation.o imageManipulation.c` <br>
+`g++ -c -o main.o main.cpp` <br>
+`g++ -o adapThresh pgmIO.o imageManipulation.o main.o` <br>
 
-Now that it is compiled this program can be run via the following command:
+Now that it is compiled this program can be run via the following command: <br>
 `./adapThresh`
 
 This program has two image files code into the main.cpp. These are "testImage0.pgm"
